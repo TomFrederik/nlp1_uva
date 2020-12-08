@@ -402,17 +402,17 @@ def train_loop(model_generator, optimizer_generator, train_data, dev_data, test_
     return losses, accuracies, best_accuracies
 
 
-def plot_results(losses, accuracies, filename=None, eval_every=100):
+def plot_results(losses, accuracies, filename=None, eval_every=100, print_every=100):
     plt.figure(figsize=(12, 6))
     plt.subplot(1, 2, 1)
     for run in losses:
-        plt.plot(run)
-    plt.xlabel("Steps / {}".format(eval_every))
+        plt.plot(range(0, print_every * len(run), print_every), run)
+    plt.xlabel("Steps")
     plt.ylabel("Loss")
     plt.subplot(1, 2, 2)
     for run in accuracies:
-        plt.plot(run)
-    plt.xlabel("Steps / {}".format(eval_every))
+        plt.plot(range(0, eval_every * len(run), eval_every), run)
+    plt.xlabel("Steps")
     plt.ylabel("Accuracy")
 
     if filename is not None:
@@ -615,7 +615,7 @@ def prepare_treelstm_minibatch(mb, vocab, permute=False):
 
 
 def sentence_length_evaluate(model, data, prep_fn=prepare_example, **kwargs):
-    """Accuracy of a model on given data set."""
+    """Accuracy of a model for different sentence lengths."""
     correct = defaultdict(int)
     total = defaultdict(int)
     model.eval()  # disable dropout (explained later)
@@ -650,14 +650,16 @@ def sentence_length_evaluate(model, data, prep_fn=prepare_example, **kwargs):
 
 
 def eval_models(model_generator, test_data,
+                model_generator_kwargs={},
+                model_dir="results/",
                 batch_fn=get_examples, 
                 prep_fn=prepare_example,
                 eval_fn=sentence_length_evaluate,
                 eval_batch_size=1):
     accuracies = []
-    for seed in range(1): ### only 1?
-        model = model_generator()
-        path = "{}_{}.pt".format(model.__class__.__name__, seed)        
+    for seed in range(3):
+        model = model_generator(**model_generator_kwargs)
+        path = model_dir + "{}_{}.pt".format(model.__class__.__name__, seed)
         ckpt = torch.load(path)
         model.load_state_dict(ckpt["state_dict"])
         #_, _, train_acc = eval_fn(

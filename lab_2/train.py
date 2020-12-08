@@ -1,6 +1,7 @@
 import models
 import utils
 import argparse
+import json
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
@@ -151,9 +152,12 @@ def train(config):
 
     # save data
     np.savez_compressed(file=config.result_dir+'results.npz', losses=losses, accs=accuracies, best_accs=best_accs)
+    with open(config.result_dir + 'config.json', "w") as write_file:
+        json.dump(config.__dict__, write_file)
     
     # plot results
-    utils.plot_results(losses, accuracies, filename=config.plot_dir+'plot.pdf', eval_every=config.eval_every)
+    utils.plot_results(losses, accuracies, filename=config.plot_dir+'plot.pdf', eval_every=config.eval_every,
+                       print_every=config.print_every)
 
 
 if __name__ == "__main__":
