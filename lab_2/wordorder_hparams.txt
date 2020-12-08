@@ -1,0 +1,1 @@
+--result_dir ./results/word_order/ --permute True --plot_dir ./plots/word_order/ --use_pt_embed True
