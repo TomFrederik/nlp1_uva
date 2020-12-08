@@ -71,8 +71,8 @@ def examplereader(path, lower=False, create_subtrees=False):
 
 def get_train_test_dev(dir='./trees/', lower=False, create_subtrees=False):
     train_data = list(examplereader("trees/train.txt", lower=lower, create_subtrees=create_subtrees))
-    dev_data = list(examplereader("trees/dev.txt", lower=lower, create_subtrees=create_subtrees))
-    test_data = list(examplereader("trees/test.txt", lower=lower, create_subtrees=create_subtrees))
+    dev_data = list(examplereader("trees/dev.txt", lower=lower, create_subtrees=False))
+    test_data = list(examplereader("trees/test.txt", lower=lower, create_subtrees=False))
 
     return train_data, dev_data, test_data
 
