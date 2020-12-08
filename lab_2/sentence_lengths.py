@@ -103,3 +103,9 @@ elif config.model == 'PTDeepCBOW':
 
 
 print(mean, std)
+
+plt.plot(mean)
+plt.fill_between(range(len(mean)), mean - std, mean + std, alpha=0.2)
+plt.xlabel("Sentence length")
+plt.ylabel("Accuracy")
+plt.show()
