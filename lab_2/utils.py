@@ -26,7 +26,7 @@ SHIFT = 0
 REDUCE = 1
 
 # A simple way to define a class is using namedtuple.
-Example = namedtuple("Example", ["tokens", "tree", "label", "transitions"])
+Example = namedtuple("Example", ["tokens", "tree", "label", "transitions", 'subtree_labels'])
 
 
 # this function reads in a textfile and fixes an issue with "\\"
@@ -49,30 +49,40 @@ def transitions_from_treestring(s):
     s = re.sub("\)", "1", s)
     return list(map(int, s.split()))
 
-def examplereader(path, lower=False, create_subtrees=False):
+def examplereader(path, lower=False, create_subtrees=False, train=False):
     """Returns all examples in a file one by one."""
     for line in filereader(path):
         line = line.lower() if lower else line
 
         if create_subtrees:
-          tree_list = [line] + get_subtrees(line)
-          for tree_string in tree_list:
-            tokens = tokens_from_treestring(tree_string)
-            tree = Tree.fromstring(tree_string)  # use NLTK's Tree
-            label = int(tree_string[1])
-            trans = transitions_from_treestring(tree_string)
-            yield Example(tokens=tokens, tree=tree, label=label, transitions=trans)  
+          # get subtree list and labels and yield example
+          subtree_list = get_subtrees(line)
+          subtree_labels = [int(t[1]) for t in subtree_list]
+          yield create_example(line, subtree_labels)
+
+          # do the same for all subtrees, but only in training
+          if train:
+            for i in range(len(subtree_list)):
+              new_subtree_list = get_subtrees(subtree_list[i])
+              new_subtree_labels = [int(t[1]) for t in new_subtree_list]
+              yield create_example(subtree_list[i], new_subtree_labels)
+              
         else:
-          tokens = tokens_from_treestring(line)
-          tree = Tree.fromstring(line)  # use NLTK's Tree
-          label = int(line[1])
-          trans = transitions_from_treestring(line)
-          yield Example(tokens=tokens, tree=tree, label=label, transitions=trans)
+          yield create_example(line, None)
+          
+
+def create_example(tree_string, subtree_labels):
+  tokens = tokens_from_treestring(tree_string)
+  tree = Tree.fromstring(tree_string)  # use NLTK's Tree
+  label = int(tree_string[1])
+  trans = transitions_from_treestring(tree_string)
+  return Example(tokens=tokens, tree=tree, label=label, transitions=trans, subtree_labels=subtree_labels) 
+
 
 def get_train_test_dev(dir='./trees/', lower=False, create_subtrees=False):
-    train_data = list(examplereader("trees/train.txt", lower=lower, create_subtrees=create_subtrees))
-    dev_data = list(examplereader("trees/dev.txt", lower=lower, create_subtrees=False))
-    test_data = list(examplereader("trees/test.txt", lower=lower, create_subtrees=False))
+    train_data = list(examplereader("trees/train.txt", lower=lower, create_subtrees=create_subtrees, train=True))
+    dev_data = list(examplereader("trees/dev.txt", lower=lower, create_subtrees=create_subtrees))
+    test_data = list(examplereader("trees/test.txt", lower=lower, create_subtrees=create_subtrees))
 
     return train_data, dev_data, test_data
 
@@ -581,8 +591,24 @@ def unbatch(state):
   return torch.split(torch.cat(state, 1), 1, 0)
 
 
+def get_correct_subtree_labels(transitions, subtree_labels):
+  '''
+  Changes order of subtree labels to be in line with transitions
+  DOES NOT WORK YET
+  '''
+  cor_labels = []
+  ctr = -1
+  
+  for t in transitions:
+    if t == 0:
+      ctr += 1
+    elif t == 1:
+      cor_labels.append(subtree_labels.pop(ctr))
+      ctr -= 1
+    print(ctr, cor_labels, subtree_labels)
+  return cor_labels
 
-def prepare_treelstm_minibatch(mb, vocab, permute=False):
+def prepare_treelstm_minibatch(mb, vocab, permute=False, subtree_labels=None):
   """
   Returns sentences reversed (last word first)
   Returns transitions together with the sentences.  

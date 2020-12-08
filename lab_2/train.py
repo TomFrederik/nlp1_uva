@@ -10,6 +10,9 @@ from collections import OrderedDict
 
 import torch.optim as optim
 
+from nltk.treeprettyprinter import TreePrettyPrinter
+from nltk import Tree
+
 
 
 def train(config):
@@ -23,16 +26,33 @@ def train(config):
 
     # set device
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    print('Device: {}'.format(device))
+
     
+    # When running on the CuDNN backend two further options must be set for reproducibility
     if device == 'cuda':
-        # When running on the CuDNN backend two further options must be set for reproducibility
         torch.backends.cudnn.deterministic = True
         torch.backends.cudnn.benchmark = False
 
 
     # load data
     print('Loading data...')
+    print('Creating subtrees!' if config.create_subtrees else '')
     train_data, dev_data, test_data = utils.get_train_test_dev(config.data_dir, create_subtrees=config.create_subtrees)
+
+    '''
+    # for testing the subtree label creation and correction
+    example = dev_data[0]
+    print("First example:", example)
+    print("First example tokens:", example.tokens)
+    print("First example label:",  example.label)
+    print(TreePrettyPrinter(example.tree))
+    print("First example transitions:",  example.transitions)
+    print("First example subtree labels:",  example.subtree_labels)
+    print(utils.get_correct_subtree_labels(example.transitions, example.subtree_labels))
+    raise NotImplementedError
+    '''
+    ####
 
     # load vocabulary and embedding
     if config.use_pt_embed:
