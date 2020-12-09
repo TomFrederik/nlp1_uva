@@ -26,7 +26,7 @@ SHIFT = 0
 REDUCE = 1
 
 # A simple way to define a class is using namedtuple.
-Example = namedtuple("Example", ["tokens", "tree", "label", "transitions", 'subtree_labels'])
+Example = namedtuple("Example", ["tokens", "tree", "label", "transitions"])
 
 
 # this function reads in a textfile and fixes an issue with "\\"
@@ -53,30 +53,20 @@ def examplereader(path, lower=False, create_subtrees=False, train=False):
     """Returns all examples in a file one by one."""
     for line in filereader(path):
         line = line.lower() if lower else line
+        yield create_example(line)
 
-        if create_subtrees:
-          # get subtree list and labels and yield example
-          subtree_list = get_subtrees(line)
-          subtree_labels = [int(t[1]) for t in subtree_list]
-          yield create_example(line, subtree_labels)
+        if create_subtrees and train:
+          subtrees = get_subtrees(line)
+          for tree in subtrees:
+              yield create_example(tree)
 
-          # do the same for all subtrees, but only in training
-          if train:
-            for i in range(len(subtree_list)):
-              new_subtree_list = get_subtrees(subtree_list[i])
-              new_subtree_labels = [int(t[1]) for t in new_subtree_list]
-              yield create_example(subtree_list[i], new_subtree_labels)
-              
-        else:
-          yield create_example(line, None)
-          
 
-def create_example(tree_string, subtree_labels):
+def create_example(tree_string):
   tokens = tokens_from_treestring(tree_string)
   tree = Tree.fromstring(tree_string)  # use NLTK's Tree
   label = int(tree_string[1])
   trans = transitions_from_treestring(tree_string)
-  return Example(tokens=tokens, tree=tree, label=label, transitions=trans, subtree_labels=subtree_labels) 
+  return Example(tokens=tokens, tree=tree, label=label, transitions=trans)
 
 
 def get_train_test_dev(dir='./trees/', lower=False, create_subtrees=False):
