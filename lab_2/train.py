@@ -40,18 +40,6 @@ def train(config):
     print('Creating subtrees!' if config.create_subtrees else '')
     train_data, dev_data, test_data = utils.get_train_test_dev(config.data_dir, create_subtrees=config.create_subtrees)
 
-    '''
-    # for testing the subtree label creation and correction
-    example = dev_data[0]
-    print("First example:", example)
-    print("First example tokens:", example.tokens)
-    print("First example label:",  example.label)
-    print(TreePrettyPrinter(example.tree))
-    print("First example transitions:",  example.transitions)
-    print("First example subtree labels:",  example.subtree_labels)
-    print(utils.get_correct_subtree_labels(example.transitions, example.subtree_labels))
-    raise NotImplementedError
-    '''
     ####
 
     # load vocabulary and embedding
@@ -206,7 +194,7 @@ if __name__ == "__main__":
     parser.add_argument('--eval_every', type=int, default=50)
     parser.add_argument('--print_every', type=int, default=50)
     parser.add_argument('--patience', type=int, default=20)
-    parser.add_argument('--learning_rate', type=float, default=2e-4)
+    parser.add_argument('--learning_rate', type=float, default=3e-4)
 
 
     config = parser.parse_args()

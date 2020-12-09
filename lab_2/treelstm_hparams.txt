@@ -1,0 +1,1 @@
+--model TreeLSTM --result_dir ./results/TreeLSTM/ --plot_dir ./plots/TreeLSTM/ --use_pt_embed True --learning_rate 0.0003 --num_iterations 0 --print_every 50 --eval_every 50 --patience 20 --hidden_dim 150

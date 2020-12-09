@@ -1,0 +1,261 @@
+Training a TreeLSTM model.
+Warning: Using pretrained embedding, will override given embedding dimension.
+Device: cuda
+Loading data...
+
+Loading pretrained embedding...
+Permute is turned off.
+Training new model with seed 0
+==================================================
+Shuffling training data
+Iter 250: loss=389.2221, time=33.94s
+iter 250: dev acc=0.3678
+new highscore
+Shuffling training data
+Iter 500: loss=340.4671, time=69.64s
+iter 500: dev acc=0.3924
+new highscore
+Shuffling training data
+Iter 750: loss=327.4910, time=106.24s
+iter 750: dev acc=0.4233
+new highscore
+Iter 1000: loss=319.4883, time=141.68s
+iter 1000: dev acc=0.4260
+new highscore
+Shuffling training data
+Iter 1250: loss=315.1349, time=177.10s
+iter 1250: dev acc=0.4351
+new highscore
+Shuffling training data
+Iter 1500: loss=307.1704, time=212.63s
+iter 1500: dev acc=0.4360
+new highscore
+Shuffling training data
+Iter 1750: loss=308.4317, time=248.59s
+iter 1750: dev acc=0.4378
+new highscore
+Iter 2000: loss=301.8225, time=284.30s
+iter 2000: dev acc=0.4441
+new highscore
+Shuffling training data
+Iter 2250: loss=300.6306, time=319.71s
+iter 2250: dev acc=0.4460
+new highscore
+Shuffling training data
+Iter 2500: loss=296.1488, time=355.26s
+iter 2500: dev acc=0.4460
+Shuffling training data
+Iter 2750: loss=294.6499, time=390.79s
+iter 2750: dev acc=0.4496
+new highscore
+Iter 3000: loss=292.7420, time=425.99s
+iter 3000: dev acc=0.4487
+Shuffling training data
+Iter 3250: loss=287.8278, time=460.62s
+iter 3250: dev acc=0.4532
+new highscore
+Shuffling training data
+Iter 3500: loss=287.8219, time=496.90s
+iter 3500: dev acc=0.4396
+Iter 3750: loss=285.3290, time=533.21s
+iter 3750: dev acc=0.4396
+Shuffling training data
+Iter 4000: loss=280.3633, time=569.02s
+iter 4000: dev acc=0.4432
+Shuffling training data
+Iter 4250: loss=280.2328, time=605.22s
+iter 4250: dev acc=0.4351
+Shuffling training data
+Iter 4500: loss=278.8632, time=640.76s
+iter 4500: dev acc=0.4323
+Iter 4750: loss=274.0760, time=676.52s
+iter 4750: dev acc=0.4460
+Shuffling training data
+Iter 5000: loss=270.0106, time=712.71s
+iter 5000: dev acc=0.4251
+Shuffling training data
+Iter 5250: loss=268.6489, time=748.37s
+iter 5250: dev acc=0.4187
+Shuffling training data
+Iter 5500: loss=268.9763, time=784.46s
+iter 5500: dev acc=0.4105
+Iter 5750: loss=260.9918, time=820.02s
+iter 5750: dev acc=0.4196
+Shuffling training data
+Iter 6000: loss=261.9825, time=856.19s
+iter 6000: dev acc=0.4251
+Shuffling training data
+Iter 6250: loss=257.7826, time=890.65s
+iter 6250: dev acc=0.4242
+Shuffling training data
+Iter 6500: loss=257.6976, time=924.77s
+iter 6500: dev acc=0.4151
+Iter 6750: loss=251.3106, time=959.48s
+iter 6750: dev acc=0.4087
+Shuffling training data
+Iter 7000: loss=247.6192, time=994.23s
+iter 7000: dev acc=0.4114
+Shuffling training data
+Iter 7250: loss=245.3853, time=1028.91s
+iter 7250: dev acc=0.4187
+Iter 7500: loss=241.2335, time=1063.22s
+iter 7500: dev acc=0.4096
+Shuffling training data
+Iter 7750: loss=237.7156, time=1097.23s
+iter 7750: dev acc=0.3978
+Shuffling training data
+Iter 8000: loss=234.4329, time=1132.01s
+iter 8000: dev acc=0.4051
+Shuffling training data
+Iter 8250: loss=235.5587, time=1166.56s
+iter 8250: dev acc=0.4078
+Stopping early because there was no improvement for 5000 steps
+Done training
+Loading best model
+best model iter 3250: train acc=0.5062, dev acc=0.4532, test acc=0.4593
+Training new model with seed 1
+==================================================
+Shuffling training data
+Iter 250: loss=389.6356, time=32.48s
+iter 250: dev acc=0.3497
+new highscore
+Shuffling training data
+Iter 500: loss=345.3542, time=67.18s
+iter 500: dev acc=0.4078
+new highscore
+Shuffling training data
+Iter 750: loss=330.0747, time=101.22s
+iter 750: dev acc=0.4196
+new highscore
+Iter 1000: loss=320.9838, time=135.25s
+iter 1000: dev acc=0.4223
+new highscore
+Shuffling training data
+Iter 1250: loss=314.9017, time=169.62s
+iter 1250: dev acc=0.4296
+new highscore
+Shuffling training data
+Iter 1500: loss=311.2548, time=203.37s
+iter 1500: dev acc=0.4378
+new highscore
+Shuffling training data
+Iter 1750: loss=303.5709, time=237.24s
+iter 1750: dev acc=0.4369
+Iter 2000: loss=303.0076, time=270.85s
+iter 2000: dev acc=0.4396
+new highscore
+Shuffling training data
+Iter 2250: loss=301.5669, time=305.09s
+iter 2250: dev acc=0.4487
+new highscore
+Shuffling training data
+Iter 2500: loss=294.4067, time=339.12s
+iter 2500: dev acc=0.4478
+Shuffling training data
+Iter 2750: loss=296.9196, time=373.07s
+iter 2750: dev acc=0.4387
+Iter 3000: loss=293.2162, time=406.89s
+iter 3000: dev acc=0.4469
+Shuffling training data
+Iter 3250: loss=290.0657, time=440.55s
+iter 3250: dev acc=0.4478
+Shuffling training data
+Iter 3500: loss=285.4976, time=474.26s
+iter 3500: dev acc=0.4378
+Iter 3750: loss=289.0186, time=508.92s
+iter 3750: dev acc=0.4396
+Shuffling training data
+Iter 4000: loss=283.9998, time=542.42s
+iter 4000: dev acc=0.4296
+Shuffling training data
+Iter 4250: loss=281.2916, time=575.84s
+iter 4250: dev acc=0.4405
+Shuffling training data
+Iter 4500: loss=276.0999, time=609.37s
+iter 4500: dev acc=0.4378
+Iter 4750: loss=274.2246, time=643.31s
+iter 4750: dev acc=0.4332
+Shuffling training data
+Iter 5000: loss=276.1039, time=677.32s
+iter 5000: dev acc=0.4378
+Shuffling training data
+Iter 5250: loss=270.3215, time=710.53s
+iter 5250: dev acc=0.4251
+Shuffling training data
+Iter 5500: loss=267.1189, time=744.35s
+iter 5500: dev acc=0.4305
+Iter 5750: loss=262.3398, time=778.32s
+iter 5750: dev acc=0.4205
+Shuffling training data
+Iter 6000: loss=260.1201, time=812.10s
+iter 6000: dev acc=0.4251
+Shuffling training data
+Iter 6250: loss=261.0211, time=847.14s
+iter 6250: dev acc=0.4314
+Shuffling training data
+Iter 6500: loss=255.5543, time=881.15s
+iter 6500: dev acc=0.4269
+Iter 6750: loss=250.5820, time=914.88s
+iter 6750: dev acc=0.4242
+Shuffling training data
+Iter 7000: loss=249.1915, time=949.18s
+iter 7000: dev acc=0.4214
+Shuffling training data
+Iter 7250: loss=246.0561, time=983.28s
+iter 7250: dev acc=0.4214
+Stopping early because there was no improvement for 5000 steps
+Done training
+Loading best model
+best model iter 2250: train acc=0.4897, dev acc=0.4487, test acc=0.4638
+Training new model with seed 2
+==================================================
+Shuffling training data
+Iter 250: loss=392.0033, time=32.19s
+iter 250: dev acc=0.3361
+new highscore
+Shuffling training data
+Iter 500: loss=353.6131, time=66.62s
+iter 500: dev acc=0.3878
+new highscore
+Shuffling training data
+Iter 750: loss=331.7565, time=100.49s
+iter 750: dev acc=0.4169
+new highscore
+Iter 1000: loss=324.8988, time=134.40s
+iter 1000: dev acc=0.4160
+Shuffling training data
+Iter 1250: loss=316.0486, time=168.18s
+iter 1250: dev acc=0.4323
+new highscore
+Shuffling training data
+Iter 1500: loss=309.2756, time=202.46s
+iter 1500: dev acc=0.4269
+Shuffling training data
+Iter 1750: loss=305.2173, time=236.00s
+iter 1750: dev acc=0.4369
+new highscore
+Iter 2000: loss=303.8819, time=269.92s
+iter 2000: dev acc=0.4432
+new highscore
+Shuffling training data
+Iter 2250: loss=300.9305, time=303.97s
+iter 2250: dev acc=0.4396
+Shuffling training data
+Iter 2500: loss=296.4354, time=337.65s
+iter 2500: dev acc=0.4450
+new highscore
+Shuffling training data
+Iter 2750: loss=297.3698, time=371.81s
+iter 2750: dev acc=0.4550
+new highscore
+Iter 3000: loss=294.2070, time=405.86s
+iter 3000: dev acc=0.4541
+Shuffling training data
+Iter 3250: loss=286.8668, time=439.59s
+iter 3250: dev acc=0.4414
+Shuffling training data
+Iter 3500: loss=286.5046, time=473.74s
+iter 3500: dev acc=0.4396
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** JOB 7062037 ON r31n5 CANCELLED AT 2020-12-09T18:01:02 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 7062037.0 ON r31n5 CANCELLED AT 2020-12-09T18:01:02 DUE TO TIME LIMIT ***

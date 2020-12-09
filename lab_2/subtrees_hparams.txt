@@ -1,0 +1,1 @@
+--model TreeLSTM --result_dir ./results/subtrees/ --plot_dir ./plots/subtrees/ --use_pt_embed True --learning_rate 0.0002 --print_every 250 --eval_every 250 --num_iterations 30000 --batch_size 25

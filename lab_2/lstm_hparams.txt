@@ -1,0 +1,1 @@
+--model LSTM --result_dir ./results/LSTM/ --plot_dir ./plots/LSTM/ --use_pt_embed True --learning_rate 0.0003 --num_iterations 0 --print_every 50 --eval_every 50 --patience 20 --hidden_dim 150

@@ -49,13 +49,13 @@ def transitions_from_treestring(s):
     s = re.sub("\)", "1", s)
     return list(map(int, s.split()))
 
-def examplereader(path, lower=False, create_subtrees=False, train=False):
+def examplereader(path, lower=False, create_subtrees=False):
     """Returns all examples in a file one by one."""
     for line in filereader(path):
         line = line.lower() if lower else line
         yield create_example(line)
 
-        if create_subtrees and train:
+        if create_subtrees:
           subtrees = get_subtrees(line)
           for tree in subtrees:
               yield create_example(tree)
@@ -70,9 +70,9 @@ def create_example(tree_string):
 
 
 def get_train_test_dev(dir='./trees/', lower=False, create_subtrees=False):
-    train_data = list(examplereader("trees/train.txt", lower=lower, create_subtrees=create_subtrees, train=True))
-    dev_data = list(examplereader("trees/dev.txt", lower=lower, create_subtrees=create_subtrees))
-    test_data = list(examplereader("trees/test.txt", lower=lower, create_subtrees=create_subtrees))
+    train_data = list(examplereader("trees/train.txt", lower=lower, create_subtrees=create_subtrees))
+    dev_data = list(examplereader("trees/dev.txt", lower=lower))
+    test_data = list(examplereader("trees/test.txt", lower=lower))
 
     return train_data, dev_data, test_data
 
@@ -581,24 +581,7 @@ def unbatch(state):
   return torch.split(torch.cat(state, 1), 1, 0)
 
 
-def get_correct_subtree_labels(transitions, subtree_labels):
-  '''
-  Changes order of subtree labels to be in line with transitions
-  DOES NOT WORK YET
-  '''
-  cor_labels = []
-  ctr = -1
-  
-  for t in transitions:
-    if t == 0:
-      ctr += 1
-    elif t == 1:
-      cor_labels.append(subtree_labels.pop(ctr))
-      ctr -= 1
-    print(ctr, cor_labels, subtree_labels)
-  return cor_labels
-
-def prepare_treelstm_minibatch(mb, vocab, permute=False, subtree_labels=None):
+def prepare_treelstm_minibatch(mb, vocab, permute=False):
   """
   Returns sentences reversed (last word first)
   Returns transitions together with the sentences.  
