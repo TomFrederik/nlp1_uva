@@ -160,7 +160,10 @@ def train(config):
         if config.permute or not config.use_pt_embed:
             raise NotImplementedError
 
-        bow_kwargs = {'vocab_size':len(v_pt.w2i), 'embedding_dim':config.embed_dim, 'vocab':v_pt, 'output_dim':len(t2i), 'num_hidden':config.hidden_dim}
+        bow_kwargs = {
+            'v_pt':v_pt, 'embed_vectors':vectors, 'embed_dim':vectors.shape[1],
+            'num_hidden':config.hidden_dim, 'num_classes':len(t2i)
+        }
 
         losses, accuracies, best_accs = utils.train_loop(utils.generate_pt_deep_cbow,
                                                             lambda model: optim.Adam(model.parameters(), lr=config.learning_rate),
