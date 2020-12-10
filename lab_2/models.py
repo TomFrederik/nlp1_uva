@@ -21,7 +21,8 @@ import torch
 import torch.nn as nn
 
 # custom
-from utils import *
+#from utils import *
+import utils
 
 # global
 SHIFT = 0
@@ -392,7 +393,7 @@ class TreeLSTM(nn.Module):
 
       # if there are sentences with reduce transition, perform them batched
       if child_l:
-        reduced = iter(unbatch(self.reduce(batch(child_l), batch(child_r))))
+        reduced = iter(utils.unbatch(self.reduce(utils.batch(child_l), utils.batch(child_r))))
         for transition, stack in zip(t_batch, stacks):
           if transition == REDUCE:
             stack.append(next(reduced))

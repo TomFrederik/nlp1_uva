@@ -61,6 +61,9 @@ elif config.model == 'TreeLSTM':
         }
 
     mean, std = utils.eval_models(utils.generate_treelstm, test_data, lstm_kwargs,
+                                  batch_fn=utils.get_minibatch,
+                                  prep_fn=utils.prepare_treelstm_minibatch,
+                                  eval_fn=utils.sentence_length_batch_evaluate,
                                   model_dir=config.result_dir, device=torch.device(device))
 
 

@@ -612,6 +612,34 @@ def prepare_treelstm_minibatch(mb, vocab, permute=False):
   
   return (x, transitions), y
 
+def sentence_length_batch_evaluate(model, data, batch_fn=get_minibatch,
+                                   prep_fn=prepare_minibatch,
+                                   batch_size=16):
+    correct = defaultdict(int)
+    total = defaultdict(int)
+    model.eval()  # disable dropout (explained later)
+    for mb in batch_fn(data, batch_size=batch_size, shuffle=False):
+        x, targets = prep_fn(mb, model.vocab)
+        with torch.no_grad():
+            logits = model(x)
+
+        predictions = logits.argmax(dim=-1).view(-1)
+
+        # Against the spirit of batching but we need to access the unpadded
+        # length
+        for i, example in enumerate(mb):
+            length = len(example.tokens)
+            correct[length] += (predictions[i] == targets.view(-1)[i]).int().item()
+            total[length] += 1
+
+    accuracy = {length: correct[length] / float(total[length]) for length in correct}
+    max_length = max(accuracy.keys())
+    # Turn it into a masked numpy array so we can later take mean etc.
+    result = np.ma.array(
+        list(accuracy[k] if k in accuracy else np.ma.masked
+             for k in range(max_length + 1)))
+
+    return correct, total, result
 
 def sentence_length_evaluate(model, data, prep_fn=prepare_example, **kwargs):
     """Accuracy of a model for different sentence lengths."""
