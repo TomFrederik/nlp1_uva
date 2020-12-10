@@ -249,7 +249,7 @@ def train_model(model, optimizer, train_data, dev_data, test_data, num_iteration
 
             # forward pass
             model.train()
-            x, targets = prep_fn(batch, model.vocab)
+            x, targets = prep_fn(batch, model.vocab, permute)
             logits = model(x)
 
             B = targets.size(0)  # later we will use B examples per update
@@ -319,13 +319,13 @@ def train_model(model, optimizer, train_data, dev_data, test_data, num_iteration
 
                 _, _, train_acc = eval_fn(
                     model, train_data, batch_size=eval_batch_size, 
-                    batch_fn=batch_fn, prep_fn=prep_fn)
+                    batch_fn=batch_fn, prep_fn=prep_fn, permute=permute)
                 _, _, dev_acc = eval_fn(
                     model, dev_data, batch_size=eval_batch_size,
-                    batch_fn=batch_fn, prep_fn=prep_fn)
+                    batch_fn=batch_fn, prep_fn=prep_fn, permute=permute)
                 _, _, test_acc = eval_fn(
                     model, test_data, batch_size=eval_batch_size, 
-                    batch_fn=batch_fn, prep_fn=prep_fn)
+                    batch_fn=batch_fn, prep_fn=prep_fn, permute=permute)
 
                 print("best model iter {:d}: "
                       "train acc={:.4f}, dev acc={:.4f}, test acc={:.4f}".format(
@@ -683,6 +683,7 @@ def eval_models(model_generator, test_data,
                 prep_fn=prepare_example,
                 eval_fn=sentence_length_evaluate,
                 eval_batch_size=1,
+                eval_kwargs={},
                 device=None):
     accuracies = []
     for seed in range(3):
@@ -698,7 +699,7 @@ def eval_models(model_generator, test_data,
         #    batch_fn=batch_fn, prep_fn=prep_fn)
         _, _, test_acc = eval_fn(
             model, test_data, batch_size=eval_batch_size, 
-            batch_fn=batch_fn, prep_fn=prep_fn)
+            batch_fn=batch_fn, prep_fn=prep_fn, **eval_kwargs)
         accuracies.append(test_acc)
     accuracies = np.stack(accuracies)
     return np.mean(accuracies, axis=0), np.std(accuracies, axis=0)
