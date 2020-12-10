@@ -654,12 +654,13 @@ def eval_models(model_generator, test_data,
                 batch_fn=get_examples, 
                 prep_fn=prepare_example,
                 eval_fn=sentence_length_evaluate,
-                eval_batch_size=1):
+                eval_batch_size=1,
+                device=None):
     accuracies = []
     for seed in range(3):
         model = model_generator(**model_generator_kwargs)
         path = model_dir + "{}_{}.pt".format(model.__class__.__name__, seed)
-        ckpt = torch.load(path)
+        ckpt = torch.load(path, map_location=device)
         model.load_state_dict(ckpt["state_dict"])
         #_, _, train_acc = eval_fn(
         #    model, train_data, batch_size=eval_batch_size, 

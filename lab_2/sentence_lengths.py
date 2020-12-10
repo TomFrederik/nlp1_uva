@@ -4,15 +4,21 @@ import json
 import utils
 import models
 from collections import OrderedDict
+import argparse
+import os
 import torch
 
 class namespace:
     def __init__(self, d):
         self.__dict__ = d
 
-path = './results/'
-results = np.load(path + 'results.npz', allow_pickle=True)
-with open(path + "config.json", "r") as read_file:
+parser = argparse.ArgumentParser()
+parser.add_argument("path", type=str, help="Path to the results directory")
+parser.add_argument("--plot_name", type=str, required=True, help="Filename for the plot (without extension)")
+args = parser.parse_args()
+
+results = np.load(os.path.join(args.path, 'results.npz'), allow_pickle=True)
+with open(os.path.join(args.path, "config.json"), "r") as read_file:
     config = namespace(json.load(read_file))
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -44,7 +50,7 @@ if config.model == 'LSTM':
         }
 
     mean, std = utils.eval_models(utils.generate_lstm, test_data, lstm_kwargs,
-                                  model_dir=config.result_dir)
+                                  model_dir=config.result_dir, device=torch.device(device))
 
 elif config.model == 'TreeLSTM':
     if config.permute or not config.use_pt_embed:
@@ -55,7 +61,7 @@ elif config.model == 'TreeLSTM':
         }
 
     mean, std = utils.eval_models(utils.generate_treelstm, test_data, lstm_kwargs,
-                                  model_dir=config.result_dir)
+                                  model_dir=config.result_dir, device=torch.device(device))
 
 
 elif config.model == 'BOW':
@@ -66,7 +72,7 @@ elif config.model == 'BOW':
 
     mean, std = utils.eval_models(lambda **kwargs: models.BOW(**kwargs).to(device),
                                   test_data, bow_kwargs,
-                                  model_dir=config.result_dir)
+                                  model_dir=config.result_dir, device=torch.device(device))
 
 
 elif config.model == 'CBOW':
@@ -77,7 +83,7 @@ elif config.model == 'CBOW':
 
     mean, std = utils.eval_models(lambda **kwargs: models.CBOW(**kwargs).to(device),
                                   test_data, bow_kwargs,
-                                  model_dir=config.result_dir)
+                                  model_dir=config.result_dir, device=torch.device(device))
 
 
 elif config.model == 'DeepCBOW':
@@ -88,18 +94,18 @@ elif config.model == 'DeepCBOW':
 
     mean, std = utils.eval_models(lambda **kwargs: models.DeepCBOW(**kwargs).to(device),
                                   test_data, bow_kwargs,
-                                  model_dir=config.result_dir)
+                                  model_dir=config.result_dir, device=torch.device(device))
 
 
 elif config.model == 'PTDeepCBOW':
     if config.permute or not config.use_pt_embed:
         raise NotImplementedError
 
-    bow_kwargs = {'vocab_size':len(v.w2i), 'embedding_dim':config.embed_dim, 'vocab':v, 'output_dim':len(t2i), 'num_hidden':config.hidden_dim}
+    bow_kwargs = {'embed_vectors': vectors, 'embed_dim': vectors.shape[1], 'v_pt':v_pt, 'num_classes':len(t2i), 'num_hidden':config.hidden_dim}
 
     mean, std = utils.eval_models(utils.generate_pt_deep_cbow,
                                   test_data, bow_kwargs,
-                                  model_dir=config.result_dir)
+                                  model_dir=config.result_dir, device=torch.device(device))
 
 
 print(mean, std)
@@ -109,3 +115,5 @@ plt.fill_between(range(len(mean)), mean - std, mean + std, alpha=0.2)
 plt.xlabel("Sentence length")
 plt.ylabel("Accuracy")
 plt.show()
+os.makedirs("plots/sentence_lengths", exist_ok=True)
+plt.savefig(os.path.join("plots/sentence_lengths", args.plot_name + ".pdf"))
