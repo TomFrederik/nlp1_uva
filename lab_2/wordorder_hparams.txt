@@ -1,1 +1,1 @@
---result_dir ./results/word_order/ --permute True --plot_dir ./plots/word_order/ --use_pt_embed True
+--result_dir ./results/word_order/ --permute True --plot_dir ./plots/word_order/ --use_pt_embed True --learning_rate 0.0003 --hidden_dim 150 --num_iterations 0 --patience 20 --print_every 50 --eval_every 20
