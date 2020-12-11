@@ -1,0 +1,496 @@
+Requirement already satisfied: nltk in /home/lgpu0388/.conda/envs/dl2020/lib/python3.7/site-packages (3.5)
+Requirement already satisfied: joblib in /home/lgpu0388/.conda/envs/dl2020/lib/python3.7/site-packages (from nltk) (0.17.0)
+Requirement already satisfied: regex in /home/lgpu0388/.conda/envs/dl2020/lib/python3.7/site-packages (from nltk) (2020.11.13)
+Requirement already satisfied: click in /home/lgpu0388/.conda/envs/dl2020/lib/python3.7/site-packages (from nltk) (7.1.2)
+Requirement already satisfied: tqdm in /home/lgpu0388/.conda/envs/dl2020/lib/python3.7/site-packages (from nltk) (4.50.2)
+Training a PTDeepCBOW model.
+Warning: Using pretrained embedding, will override given embedding dimension.
+Device: cuda
+Loading data...
+
+Loading pretrained embedding...
+Permute is turned off.
+Training new model with seed 0
+==================================================
+Shuffling training data
+Iter 1000: loss=6698.2800, time=3.96s
+iter 1000: dev acc=0.2016
+new highscore
+Iter 2000: loss=1829.9523, time=8.36s
+iter 2000: dev acc=0.3061
+new highscore
+Iter 3000: loss=1609.1057, time=12.62s
+iter 3000: dev acc=0.3397
+new highscore
+Iter 4000: loss=1563.4538, time=16.80s
+iter 4000: dev acc=0.3642
+new highscore
+Iter 5000: loss=1520.5587, time=21.15s
+iter 5000: dev acc=0.3606
+Iter 6000: loss=1485.6054, time=25.33s
+iter 6000: dev acc=0.3860
+new highscore
+Iter 7000: loss=1470.6535, time=29.65s
+iter 7000: dev acc=0.3896
+new highscore
+Iter 8000: loss=1418.8457, time=33.92s
+iter 8000: dev acc=0.4024
+new highscore
+Shuffling training data
+Iter 9000: loss=1421.4348, time=38.21s
+iter 9000: dev acc=0.3760
+Iter 10000: loss=1391.9556, time=42.34s
+iter 10000: dev acc=0.4087
+new highscore
+Iter 11000: loss=1366.7576, time=46.78s
+iter 11000: dev acc=0.4051
+Iter 12000: loss=1388.8831, time=51.04s
+iter 12000: dev acc=0.4087
+Iter 13000: loss=1402.9809, time=55.29s
+iter 13000: dev acc=0.4105
+new highscore
+Iter 14000: loss=1375.2320, time=59.65s
+iter 14000: dev acc=0.4187
+new highscore
+Iter 15000: loss=1346.2203, time=64.02s
+iter 15000: dev acc=0.4060
+Iter 16000: loss=1363.0383, time=68.27s
+iter 16000: dev acc=0.4069
+Iter 17000: loss=1343.5411, time=72.53s
+iter 17000: dev acc=0.4151
+Shuffling training data
+Iter 18000: loss=1322.6044, time=76.77s
+iter 18000: dev acc=0.4196
+new highscore
+Iter 19000: loss=1340.6594, time=81.15s
+iter 19000: dev acc=0.4151
+Iter 20000: loss=1356.0073, time=85.38s
+iter 20000: dev acc=0.4233
+new highscore
+Iter 21000: loss=1301.8478, time=89.81s
+iter 21000: dev acc=0.4024
+Iter 22000: loss=1332.0935, time=94.10s
+iter 22000: dev acc=0.4305
+new highscore
+Iter 23000: loss=1303.7072, time=98.50s
+iter 23000: dev acc=0.4233
+Iter 24000: loss=1307.7470, time=102.78s
+iter 24000: dev acc=0.4205
+Iter 25000: loss=1318.7060, time=107.07s
+iter 25000: dev acc=0.4287
+Shuffling training data
+Iter 26000: loss=1317.6478, time=111.34s
+iter 26000: dev acc=0.4351
+new highscore
+Iter 27000: loss=1331.9357, time=115.74s
+iter 27000: dev acc=0.4269
+Iter 28000: loss=1285.2579, time=120.00s
+iter 28000: dev acc=0.4296
+Iter 29000: loss=1287.7404, time=124.22s
+iter 29000: dev acc=0.4124
+Iter 30000: loss=1291.7691, time=128.49s
+iter 30000: dev acc=0.4105
+Iter 31000: loss=1339.1321, time=132.79s
+iter 31000: dev acc=0.4423
+new highscore
+Iter 32000: loss=1317.9353, time=137.22s
+iter 32000: dev acc=0.4178
+Iter 33000: loss=1305.9603, time=141.49s
+iter 33000: dev acc=0.4296
+Iter 34000: loss=1291.2482, time=145.75s
+iter 34000: dev acc=0.4196
+Shuffling training data
+Iter 35000: loss=1302.0421, time=150.03s
+iter 35000: dev acc=0.4332
+Iter 36000: loss=1293.5103, time=154.30s
+iter 36000: dev acc=0.4151
+Iter 37000: loss=1275.7092, time=158.56s
+iter 37000: dev acc=0.4260
+Iter 38000: loss=1300.6226, time=162.84s
+iter 38000: dev acc=0.4305
+Iter 39000: loss=1274.3276, time=167.13s
+iter 39000: dev acc=0.4423
+Iter 40000: loss=1298.7559, time=171.39s
+iter 40000: dev acc=0.4269
+Iter 41000: loss=1308.7401, time=175.65s
+iter 41000: dev acc=0.4142
+Iter 42000: loss=1314.0829, time=179.90s
+iter 42000: dev acc=0.4305
+Shuffling training data
+Iter 43000: loss=1279.7367, time=184.14s
+iter 43000: dev acc=0.4332
+Iter 44000: loss=1284.3176, time=188.44s
+iter 44000: dev acc=0.4369
+Iter 45000: loss=1298.3978, time=192.73s
+iter 45000: dev acc=0.4405
+Iter 46000: loss=1260.3742, time=196.99s
+iter 46000: dev acc=0.4242
+Iter 47000: loss=1284.7310, time=201.25s
+iter 47000: dev acc=0.4060
+Iter 48000: loss=1278.0462, time=205.49s
+iter 48000: dev acc=0.4042
+Iter 49000: loss=1254.9977, time=209.77s
+iter 49000: dev acc=0.4233
+Iter 50000: loss=1316.8591, time=214.06s
+iter 50000: dev acc=0.4351
+Iter 51000: loss=1288.1810, time=218.34s
+iter 51000: dev acc=0.4314
+Stopping early because there was no improvement for 20000 steps
+Done training
+Loading best model
+best model iter 31000: train acc=0.4473, dev acc=0.4423, test acc=0.4430
+Training new model with seed 1
+==================================================
+Shuffling training data
+Iter 1000: loss=5370.7120, time=3.63s
+iter 1000: dev acc=0.2770
+new highscore
+Iter 2000: loss=1776.0507, time=7.99s
+iter 2000: dev acc=0.3106
+new highscore
+Iter 3000: loss=1678.1329, time=12.36s
+iter 3000: dev acc=0.3388
+new highscore
+Iter 4000: loss=1604.6148, time=16.75s
+iter 4000: dev acc=0.3497
+new highscore
+Iter 5000: loss=1573.0045, time=21.15s
+iter 5000: dev acc=0.3297
+Iter 6000: loss=1563.4511, time=25.42s
+iter 6000: dev acc=0.2997
+Iter 7000: loss=1504.8286, time=29.71s
+iter 7000: dev acc=0.3533
+new highscore
+Iter 8000: loss=1479.5811, time=34.12s
+iter 8000: dev acc=0.3724
+new highscore
+Shuffling training data
+Iter 9000: loss=1473.7711, time=38.53s
+iter 9000: dev acc=0.3342
+Iter 10000: loss=1428.7131, time=42.79s
+iter 10000: dev acc=0.3842
+new highscore
+Iter 11000: loss=1424.6937, time=47.18s
+iter 11000: dev acc=0.3987
+new highscore
+Iter 12000: loss=1397.8283, time=51.61s
+iter 12000: dev acc=0.3769
+Iter 13000: loss=1379.1324, time=55.87s
+iter 13000: dev acc=0.3933
+Iter 14000: loss=1375.3744, time=60.13s
+iter 14000: dev acc=0.4114
+new highscore
+Iter 15000: loss=1361.9206, time=64.55s
+iter 15000: dev acc=0.4105
+Iter 16000: loss=1353.2531, time=68.80s
+iter 16000: dev acc=0.4233
+new highscore
+Iter 17000: loss=1356.6429, time=73.22s
+iter 17000: dev acc=0.3969
+Shuffling training data
+Iter 18000: loss=1362.6298, time=77.50s
+iter 18000: dev acc=0.3951
+Iter 19000: loss=1328.8608, time=81.75s
+iter 19000: dev acc=0.3987
+Iter 20000: loss=1311.0929, time=86.03s
+iter 20000: dev acc=0.3951
+Iter 21000: loss=1336.8843, time=90.33s
+iter 21000: dev acc=0.4114
+Iter 22000: loss=1331.9583, time=94.60s
+iter 22000: dev acc=0.4160
+Iter 23000: loss=1305.8807, time=98.89s
+iter 23000: dev acc=0.3960
+Iter 24000: loss=1343.4333, time=103.19s
+iter 24000: dev acc=0.4169
+Iter 25000: loss=1335.1939, time=107.42s
+iter 25000: dev acc=0.4114
+Shuffling training data
+Iter 26000: loss=1331.4358, time=111.69s
+iter 26000: dev acc=0.4160
+Iter 27000: loss=1293.9382, time=115.97s
+iter 27000: dev acc=0.4124
+Iter 28000: loss=1314.5673, time=120.23s
+iter 28000: dev acc=0.4015
+Iter 29000: loss=1308.3761, time=124.52s
+iter 29000: dev acc=0.4133
+Iter 30000: loss=1289.9441, time=128.81s
+iter 30000: dev acc=0.4060
+Iter 31000: loss=1309.5893, time=133.09s
+iter 31000: dev acc=0.3987
+Iter 32000: loss=1325.4597, time=137.38s
+iter 32000: dev acc=0.3960
+Iter 33000: loss=1313.8147, time=141.61s
+iter 33000: dev acc=0.4151
+Iter 34000: loss=1315.1880, time=145.90s
+iter 34000: dev acc=0.4269
+new highscore
+Shuffling training data
+Iter 35000: loss=1312.5704, time=150.32s
+iter 35000: dev acc=0.4160
+Iter 36000: loss=1276.3753, time=154.59s
+iter 36000: dev acc=0.4078
+Iter 37000: loss=1289.1894, time=158.85s
+iter 37000: dev acc=0.4096
+Iter 38000: loss=1324.7091, time=163.08s
+iter 38000: dev acc=0.4096
+Iter 39000: loss=1285.3367, time=167.37s
+iter 39000: dev acc=0.4296
+new highscore
+Iter 40000: loss=1287.8751, time=171.78s
+iter 40000: dev acc=0.3906
+Iter 41000: loss=1291.1097, time=176.02s
+iter 41000: dev acc=0.4242
+Iter 42000: loss=1298.9331, time=180.24s
+iter 42000: dev acc=0.4142
+Shuffling training data
+Iter 43000: loss=1260.7648, time=184.48s
+iter 43000: dev acc=0.4223
+Iter 44000: loss=1257.8075, time=188.72s
+iter 44000: dev acc=0.4205
+Iter 45000: loss=1283.9353, time=192.96s
+iter 45000: dev acc=0.3951
+Iter 46000: loss=1301.0238, time=197.21s
+iter 46000: dev acc=0.4051
+Iter 47000: loss=1280.4517, time=201.49s
+iter 47000: dev acc=0.4087
+Iter 48000: loss=1305.7830, time=205.77s
+iter 48000: dev acc=0.4160
+Iter 49000: loss=1302.0252, time=210.05s
+iter 49000: dev acc=0.3869
+Iter 50000: loss=1302.2658, time=214.28s
+iter 50000: dev acc=0.4160
+Iter 51000: loss=1257.1643, time=218.55s
+iter 51000: dev acc=0.4242
+Shuffling training data
+Iter 52000: loss=1309.0815, time=222.79s
+iter 52000: dev acc=0.3924
+Iter 53000: loss=1266.5703, time=227.02s
+iter 53000: dev acc=0.4187
+Iter 54000: loss=1261.3587, time=231.28s
+iter 54000: dev acc=0.4205
+Iter 55000: loss=1245.2876, time=235.51s
+iter 55000: dev acc=0.4078
+Iter 56000: loss=1267.6248, time=239.80s
+iter 56000: dev acc=0.3924
+Iter 57000: loss=1300.7920, time=244.07s
+iter 57000: dev acc=0.3969
+Iter 58000: loss=1275.2719, time=248.30s
+iter 58000: dev acc=0.4187
+Iter 59000: loss=1316.5329, time=252.56s
+iter 59000: dev acc=0.3806
+Stopping early because there was no improvement for 20000 steps
+Done training
+Loading best model
+best model iter 39000: train acc=0.4500, dev acc=0.4296, test acc=0.4326
+Training new model with seed 2
+==================================================
+Shuffling training data
+Iter 1000: loss=5357.2210, time=3.61s
+iter 1000: dev acc=0.2598
+new highscore
+Iter 2000: loss=1948.1452, time=7.96s
+iter 2000: dev acc=0.2816
+new highscore
+Iter 3000: loss=1663.5773, time=12.39s
+iter 3000: dev acc=0.2207
+Iter 4000: loss=1626.8438, time=16.67s
+iter 4000: dev acc=0.2498
+Iter 5000: loss=1616.3088, time=20.90s
+iter 5000: dev acc=0.3233
+new highscore
+Iter 6000: loss=1573.9496, time=25.27s
+iter 6000: dev acc=0.3161
+Iter 7000: loss=1545.9024, time=29.53s
+iter 7000: dev acc=0.3061
+Iter 8000: loss=1554.9619, time=33.78s
+iter 8000: dev acc=0.3261
+new highscore
+Shuffling training data
+Iter 9000: loss=1548.8733, time=38.15s
+iter 9000: dev acc=0.3470
+new highscore
+Iter 10000: loss=1504.0531, time=42.56s
+iter 10000: dev acc=0.3497
+new highscore
+Iter 11000: loss=1499.6289, time=46.96s
+iter 11000: dev acc=0.3697
+new highscore
+Iter 12000: loss=1476.7724, time=51.32s
+iter 12000: dev acc=0.3724
+new highscore
+Iter 13000: loss=1469.7585, time=55.68s
+iter 13000: dev acc=0.3642
+Iter 14000: loss=1454.8569, time=59.96s
+iter 14000: dev acc=0.3951
+new highscore
+Iter 15000: loss=1432.2145, time=64.34s
+iter 15000: dev acc=0.3742
+Iter 16000: loss=1420.2296, time=68.52s
+iter 16000: dev acc=0.3869
+Iter 17000: loss=1379.1358, time=72.76s
+iter 17000: dev acc=0.3842
+Shuffling training data
+Iter 18000: loss=1377.6806, time=76.94s
+iter 18000: dev acc=0.3851
+Iter 19000: loss=1352.8814, time=81.12s
+iter 19000: dev acc=0.4087
+new highscore
+Iter 20000: loss=1357.3547, time=85.46s
+iter 20000: dev acc=0.4033
+Iter 21000: loss=1342.5429, time=89.68s
+iter 21000: dev acc=0.4105
+new highscore
+Iter 22000: loss=1371.5059, time=93.95s
+iter 22000: dev acc=0.4069
+Iter 23000: loss=1361.7283, time=98.09s
+iter 23000: dev acc=0.4069
+Iter 24000: loss=1363.3515, time=102.27s
+iter 24000: dev acc=0.3942
+Iter 25000: loss=1337.8496, time=106.48s
+iter 25000: dev acc=0.4024
+Shuffling training data
+Iter 26000: loss=1351.2101, time=110.66s
+iter 26000: dev acc=0.4096
+Iter 27000: loss=1343.4328, time=114.81s
+iter 27000: dev acc=0.4087
+Iter 28000: loss=1316.4771, time=118.99s
+iter 28000: dev acc=0.3951
+Iter 29000: loss=1338.8032, time=123.16s
+iter 29000: dev acc=0.3715
+Iter 30000: loss=1316.6969, time=127.34s
+iter 30000: dev acc=0.3933
+Iter 31000: loss=1305.4464, time=131.52s
+iter 31000: dev acc=0.4178
+new highscore
+Iter 32000: loss=1331.1162, time=135.85s
+iter 32000: dev acc=0.4124
+Iter 33000: loss=1318.1914, time=140.03s
+iter 33000: dev acc=0.4015
+Iter 34000: loss=1290.4524, time=144.21s
+iter 34000: dev acc=0.4178
+Shuffling training data
+Iter 35000: loss=1333.3728, time=148.40s
+iter 35000: dev acc=0.4142
+Iter 36000: loss=1276.8165, time=152.53s
+iter 36000: dev acc=0.4033
+Iter 37000: loss=1300.5164, time=156.53s
+iter 37000: dev acc=0.4160
+Iter 38000: loss=1317.7595, time=160.53s
+iter 38000: dev acc=0.3942
+Iter 39000: loss=1285.7387, time=164.56s
+iter 39000: dev acc=0.4223
+new highscore
+Iter 40000: loss=1291.9780, time=168.81s
+iter 40000: dev acc=0.4178
+Iter 41000: loss=1289.6652, time=172.98s
+iter 41000: dev acc=0.4105
+Iter 42000: loss=1327.8290, time=177.12s
+iter 42000: dev acc=0.3951
+Shuffling training data
+Iter 43000: loss=1319.7172, time=181.36s
+iter 43000: dev acc=0.4024
+Iter 44000: loss=1288.3982, time=185.55s
+iter 44000: dev acc=0.4033
+Iter 45000: loss=1276.3612, time=189.72s
+iter 45000: dev acc=0.4060
+Iter 46000: loss=1268.3904, time=193.90s
+iter 46000: dev acc=0.4151
+Iter 47000: loss=1256.6306, time=198.14s
+iter 47000: dev acc=0.3906
+Iter 48000: loss=1270.5303, time=202.34s
+iter 48000: dev acc=0.4314
+new highscore
+Iter 49000: loss=1341.0190, time=206.65s
+iter 49000: dev acc=0.4142
+Iter 50000: loss=1309.5771, time=210.78s
+iter 50000: dev acc=0.4332
+new highscore
+Iter 51000: loss=1294.8707, time=215.07s
+iter 51000: dev acc=0.4096
+Shuffling training data
+Iter 52000: loss=1280.6662, time=219.24s
+iter 52000: dev acc=0.4251
+Iter 53000: loss=1252.5407, time=223.39s
+iter 53000: dev acc=0.3978
+Iter 54000: loss=1280.6566, time=227.56s
+iter 54000: dev acc=0.4233
+Iter 55000: loss=1275.2319, time=231.70s
+iter 55000: dev acc=0.3924
+Iter 56000: loss=1302.8973, time=235.85s
+iter 56000: dev acc=0.4296
+Iter 57000: loss=1285.7497, time=240.02s
+iter 57000: dev acc=0.4251
+Iter 58000: loss=1303.2815, time=244.16s
+iter 58000: dev acc=0.4223
+Iter 59000: loss=1284.4751, time=248.35s
+iter 59000: dev acc=0.3906
+Shuffling training data
+Iter 60000: loss=1286.9388, time=252.50s
+iter 60000: dev acc=0.4287
+Iter 61000: loss=1266.5944, time=256.63s
+iter 61000: dev acc=0.4305
+Iter 62000: loss=1264.5180, time=260.80s
+iter 62000: dev acc=0.3833
+Iter 63000: loss=1257.4776, time=264.96s
+iter 63000: dev acc=0.4242
+Iter 64000: loss=1290.9508, time=269.15s
+iter 64000: dev acc=0.4260
+Iter 65000: loss=1261.9690, time=273.35s
+iter 65000: dev acc=0.4133
+Iter 66000: loss=1266.5969, time=277.53s
+iter 66000: dev acc=0.4178
+Iter 67000: loss=1318.8697, time=281.73s
+iter 67000: dev acc=0.4214
+Iter 68000: loss=1279.0890, time=285.89s
+iter 68000: dev acc=0.4342
+new highscore
+Shuffling training data
+Iter 69000: loss=1249.2761, time=290.21s
+iter 69000: dev acc=0.4233
+Iter 70000: loss=1260.2400, time=294.36s
+iter 70000: dev acc=0.4142
+Iter 71000: loss=1256.6619, time=298.53s
+iter 71000: dev acc=0.4305
+Iter 72000: loss=1281.4285, time=302.72s
+iter 72000: dev acc=0.4024
+Iter 73000: loss=1257.5070, time=306.86s
+iter 73000: dev acc=0.4024
+Iter 74000: loss=1280.2912, time=310.98s
+iter 74000: dev acc=0.4278
+Iter 75000: loss=1287.4103, time=315.13s
+iter 75000: dev acc=0.4024
+Iter 76000: loss=1266.4963, time=319.31s
+iter 76000: dev acc=0.4124
+Shuffling training data
+Iter 77000: loss=1272.1455, time=323.42s
+iter 77000: dev acc=0.4024
+Iter 78000: loss=1255.8363, time=327.59s
+iter 78000: dev acc=0.4278
+Iter 79000: loss=1258.0528, time=331.74s
+iter 79000: dev acc=0.4133
+Iter 80000: loss=1312.7383, time=335.94s
+iter 80000: dev acc=0.3987
+Iter 81000: loss=1266.6149, time=340.13s
+iter 81000: dev acc=0.4142
+Iter 82000: loss=1240.0723, time=344.29s
+iter 82000: dev acc=0.4087
+Iter 83000: loss=1250.2341, time=348.45s
+iter 83000: dev acc=0.4332
+Iter 84000: loss=1263.3988, time=352.65s
+iter 84000: dev acc=0.4060
+Iter 85000: loss=1266.9618, time=356.84s
+iter 85000: dev acc=0.4233
+Shuffling training data
+Iter 86000: loss=1268.5945, time=361.04s
+iter 86000: dev acc=0.4205
+Iter 87000: loss=1242.6486, time=365.19s
+iter 87000: dev acc=0.4278
+Iter 88000: loss=1256.4081, time=369.38s
+iter 88000: dev acc=0.4278
+Stopping early because there was no improvement for 20000 steps
+Done training
+Loading best model
+best model iter 68000: train acc=0.4631, dev acc=0.4342, test acc=0.4403
+Test accuracy: 0.4386123680241327 +- 0.004407734297496955
+/home/lgpu0388/.conda/envs/dl2020/lib/python3.7/site-packages/numpy/core/_asarray.py:136: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
+  return array(a, dtype, copy=False, order=order, subok=True)

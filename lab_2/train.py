@@ -21,9 +21,6 @@ def train(config):
     #        print(key,confi)
     print('Training a {} model.'.format(config.model))
 
-    if config.use_pt_embed:
-        print('Warning: Using pretrained embedding, will override given embedding dimension.')
-
     # set device
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     print('Device: {}'.format(device))
@@ -83,7 +80,8 @@ def train(config):
             raise NotImplementedError('Permute not implemented for TreeLSTM')
         
         lstm_kwargs ={
-            'v_pt':v_pt, 'embed_vectors':vectors, 'embed_dim':vectors.shape[1], 'hidden_dim':config.hidden_dim, 'output_dim':len(t2i)
+            'v_pt':v_pt, 'embed_vectors':vectors, 'embed_dim':vectors.shape[1], 'hidden_dim':config.hidden_dim, 'output_dim':len(t2i),
+            'childsum':config.childsum
             }
 
         losses, accuracies, best_accs = utils.train_loop(utils.generate_treelstm, 
@@ -182,6 +180,7 @@ if __name__ == "__main__":
     parser.add_argument('--use_pt_embed', type=bool, default=False)
     parser.add_argument('--permute', type=bool, default=False)
     parser.add_argument('--create_subtrees', type=bool, default=False)
+    parser.add_argument('--childsum', type=bool, default=False)
     parser.add_argument('--embed_path', type=str, default='./googlenews.word2vec.300d.txt')
     parser.add_argument('--result_dir', type=str, default='./results/')
     parser.add_argument('--plot_dir', type=str, default='./plots/')

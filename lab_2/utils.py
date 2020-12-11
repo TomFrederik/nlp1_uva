@@ -471,11 +471,11 @@ def generate_lstm(v_pt, embed_vectors, embed_dim, hidden_dim, output_dim):
     lstm_model = lstm_model.to(device)
     return lstm_model
 
-def generate_treelstm(v_pt, embed_vectors, embed_dim, hidden_dim, output_dim):
+def generate_treelstm(v_pt, embed_vectors, embed_dim, hidden_dim, output_dim, childsum=False):
 
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-    tree_model = models.TreeLSTMClassifier(len(v_pt.w2i), embed_dim, hidden_dim, output_dim, v_pt)
+    tree_model = models.TreeLSTMClassifier(len(v_pt.w2i), embed_dim, hidden_dim, output_dim, v_pt, childsum=childsum)
 
     # copy pre-trained word vectors into embeddings table
     with torch.no_grad():
