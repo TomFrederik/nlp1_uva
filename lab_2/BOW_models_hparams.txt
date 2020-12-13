@@ -1,4 +1,4 @@
 --model BOW --result_dir ./results/BOW/ --plot_dir ./plots/BOW/ --num_iterations 0 --eval_every 1000 --print_every 1000 --patience 20 --learning_rate 0.0003
 --model CBOW --result_dir ./results/CBOW/ --plot_dir ./plots/CBOW/ --num_iterations 0 --eval_every 1000 --print_every 1000 --patience 20 --learning_rate 0.0003 --embed_dim 300
---model DeepCBOW --result_dir ./results/DeepCBOW/ --plot_dir ./plots/DeepCBOW/ --num_iterations 0 --eval_every 1000 --print_every 1000 --patience 20 --learning_rate 0.0003 --embed_dim 300 --hidden_dim 150
---model PTDeepCBOW --result_dir ./results/PTDeepCBOW/ --plot_dir ./plots/PTDeepCBOW/ --num_iterations 0 --eval_every 1000 --print_every 1000 --patience 20 --learning_rate 0.0003 --embed_dim 300 --hidden_dim 150 --use_pt_embed True
+--model DeepCBOW --result_dir ./results/DeepCBOW/ --plot_dir ./plots/DeepCBOW/ --num_iterations 0 --eval_every 1000 --print_every 1000 --patience 20 --learning_rate 0.0003 --embed_dim 300 --hidden_dim 100
+--model PTDeepCBOW --result_dir ./results/PTDeepCBOW/ --plot_dir ./plots/PTDeepCBOW/ --num_iterations 0 --eval_every 1000 --print_every 1000 --patience 20 --learning_rate 0.0003 --embed_dim 300 --hidden_dim 100 --use_pt_embed True
