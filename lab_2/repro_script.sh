@@ -1,6 +1,22 @@
 #!/bin/bash
 
+# This script will download the dataset and pretrained embeddings,
+# train all our models (saved in ./results/), and produce all our plots (in ./plots/)
+
 # make sure to have installed and activated the correct packages
+
+# Download SST dataset. Comment out if data is already under ./trees/
+wget http://nlp.stanford.edu/sentiment/trainDevTestTrees_PTB.zip
+unzip trainDevTestTrees_PTB.zip
+
+# Download the word2vec embeddings
+wget https://gist.githubusercontent.com/bastings/4d1c346c68969b95f2c34cfbc00ba0a0/raw/76b4fefc9ef635a79d0d8002522543bc53ca2683/googlenews.word2vec.300d.txt
+
+# Make sure the output folders exist
+for experiment in BOW CBOW DeepCBOW PTDeepCBOW LSTM TreeLSTM word_order subtrees childsum; do
+    mkdir -p "results/$experiment"
+    mkdir -p "plots/$experiment"
+done
 
 
 ## BOW approaches
@@ -35,5 +51,11 @@ python3 -u train.py --model TreeLSTM --result_dir ./results/subtrees/ --plot_dir
 # childsum TreeLSTM
 python3 -u train.py --model TreeLSTM --result_dir ./results/childsum/ --plot_dir ./plots/childsum/ --use_pt_embed True --learning_rate 0.0003 --num_iterations 0 --print_every 50 --eval_every 50 --patience 20 --hidden_dim 150 --childsum True
 
+# Create overview plots with all accuracies
+python3 plot_all.py
 
-
+# Create sentence length plots:
+mkdir -p plots/sentence_lengths
+for experiment in BOW CBOW DeepCBOW PTDeepCBOW LSTM TreeLSTM; do
+    python3 -u sentence_lengths.py "results/$experiment" --plot_name "$experiment"
+done
