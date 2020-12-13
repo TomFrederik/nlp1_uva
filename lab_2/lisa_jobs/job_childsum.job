@@ -1,15 +1,15 @@
 #!/bin/bash
 
-#SBATCH --job-name="tom_deepbowonly"
+#SBATCH --job-name="tom_childsum"
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=3
 #SBATCH --ntasks-per-node=1
-#SBATCH --time=1:45:00
+#SBATCH --time=0:45:00
 #SBATCH --mem=20000M
 #SBATCH --partition=gpu_shared_course
 #SBATCH --gres=gpu:1
-#SBATCH --array=1-2%2
-#SBATCH --out=./job_outputs/deepbowonly_%A_%a.out
+#SBATCH --array=1-1%2
+#SBATCH --out=./job_outputs/childsum_%A_%a.out
 
 
 module purge
@@ -24,8 +24,9 @@ module load Anaconda3/2018.12
 cd $HOME/nlp1_uva/lab_2/
 
 source activate dl2020
-pip install nltk
 
-HPARAMS_FILE=./DeepBOWonly_models_hparams.txt
+HPARAMS_FILE=./lisa_params/childsum_hparams.txt
 
 srun python3 -u train.py $(head -$SLURM_ARRAY_TASK_ID $HPARAMS_FILE | tail -1)
+
+
